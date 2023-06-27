@@ -9,6 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import Recipe
 from recipe import serializers
 
+
 class RecipeViewSet(viewsets.ModelViewSet):
     """View for manage recipe APIS."""
     serializer_class = serializers.RecipeSerializer
@@ -19,5 +20,3 @@ class RecipeViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """Retrieve recipes for authenticated user."""
         return self.queryset.filter(user=self.request.user).order_by('-id')
-
-
